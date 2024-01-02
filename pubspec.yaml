@@ -1,0 +1,67 @@
+name: lavoro
+version: 0.0.0+1
+description: Lavoro is a comprehensive and user-friendly mobile application that serves as your go-to platform for accessing the latest updates and opportunities in training and technology jobs. Whether you're an aspiring technologist, a training enthusiast, or a proactive job seeker, Lavoro empowers you with real-time information on job training programs, tech industry developments, and employment opportunities in the ever-evolving tech landscape.
+publish_to: none # Remove this line if you wish to publish to pub.dev
+
+environment: 
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies: 
+  flutter: 
+    sdk: flutter
+  rive: ^0.12.4
+  fluentui_system_icons: ^1.1.223
+  animated_bottom_navigation_bar: ^1.3.0
+  cupertino_icons: ^1.0.2
+  carousel_slider: ^4.2.1
+  google_fonts: ^6.1.0
+  # UI and Animation:
+  liquid_swipe: ^3.1.0
+  smooth_page_indicator: ^1.1.0
+  curved_navigation_bar: ^1.0.3
+  flutter_otp_text_field: ^1.1.1
+  shimmer: ^3.0.0
+  awesome_snackbar_content: ^0.1.3
+  dropdown_button2: ^2.3.7
+
+  # Image and Media:
+  image_picker: ^1.0.1
+  multiple_images_picker: ^1.0.1
+  # multi_image_picker:
+  flutter_svg: ^2.0.7
+  lottie: ^2.5.0
+
+  # Authentication and Data Storage:
+  firebase_auth: ^4.7.1
+  firebase_core: ^2.15.0
+  cloud_firestore: ^4.8.3
+  firebase_storage: ^11.2.5
+
+  # State Management and Data Handling:
+  get: ^4.6.5
+  get_storage: ^2.1.1
+
+  # Utilities and Helpers:
+  permission_handler: ^10.4.3
+  intl: ^0.18.0
+  uuid: ^3.0.7
+
+  # UI Input and Forms:
+  font_awesome_flutter: ^10.5.0
+
+  # Other Dependencies:
+  fluttertoast: ^8.2.2
+  url_launcher: ^6.1.12
+  cached_network_image: ^3.3.0
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/lottie/

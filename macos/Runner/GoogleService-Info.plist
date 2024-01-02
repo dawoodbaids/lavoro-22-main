@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>536578784151-je5t8tkaf66istl61012e46c7n4othau.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.536578784151-je5t8tkaf66istl61012e46c7n4othau</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCjLRTwE9-Abki75PiulpdU4yxAenuMthw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>536578784151</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.technest.statewatch.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>statewatch-728db</string>
+	<key>STORAGE_BUCKET</key>
+	<string>statewatch-728db.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:536578784151:ios:c7f74f35584f7f47e5e2d2</string>
+</dict>
+</plist>
