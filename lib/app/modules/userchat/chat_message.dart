@@ -12,7 +12,7 @@ import '../../data/model/chat_message.dart';
 import '../../data/model/chatuser_db.dart';
 import '../../global_widgets/image_manipulation.dart';
 import '../../global_widgets/loading_widget.dart';
-import '../auth/chat_db.dart';
+import 'chat_db.dart';
 import '../user_profile/view/user_profile_view.dart';
 import 'components/text_messages.dart';
 

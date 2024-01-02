@@ -23,7 +23,7 @@ class MesssageTextBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isArabic = Intl.getCurrentLocale().startsWith('ar');
+    final isArabic = Intl.getCurrentLocale().startsWith("");
 
     return GestureDetector(
       onTap: () {

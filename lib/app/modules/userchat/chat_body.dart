@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import '../../data/model/chatuser_db.dart';
 import '../../data/model/user_model.dart';
 import '../../data/provider/user_firebase.dart';
-import '../auth/chat_db.dart';
+import 'chat_db.dart';
 import 'chat_message.dart';
 
 class ChatBody extends StatefulWidget {

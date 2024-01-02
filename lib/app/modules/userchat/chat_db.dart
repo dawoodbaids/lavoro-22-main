@@ -7,7 +7,7 @@ import '../../data/model/chat_message.dart';
 import '../../data/model/chatuser_db.dart';
 import '../../data/model/user_model.dart';
 import '../../data/provider/user_firebase.dart';
-import '../../modules/userchat/chat_message.dart';
+import 'chat_message.dart';
 
 class ChatDatabase extends GetxController {
   Future addUserInfoToDB(String userId, Map<String, dynamic> userInfoMap) {
@@ -17,30 +17,30 @@ class ChatDatabase extends GetxController {
         .set(userInfoMap);
   }
 
-  static Future<String> createChat(String userId, String marketId) async {
+  static Future<String> createChat(String userId) async {
     var uuid = const Uuid();
 
     final CollectionReference chatRef =
         FirebaseFirestore.instance.collection('chat');
 
     // Check if chat user send to self
-    if (marketId == userId) {
+    if (userId == userId) {
       return "";
     }
     QuerySnapshot existingChatSnapshot = await chatRef
         .where('from', isEqualTo: userId)
-        .where('to', isEqualTo: marketId)
+        .where('to', isEqualTo: userId)
         .get();
 
     QuerySnapshot existingChatSnapshot2 = await chatRef
-        .where('from', isEqualTo: marketId)
+        .where('from', isEqualTo:userId)
         .where('to', isEqualTo: userId)
         .get();
 
     if (existingChatSnapshot.docs.isNotEmpty) {
       QuerySnapshot<Object?> chatid = await chatRef
           .where('from', isEqualTo: userId)
-          .where('to', isEqualTo: marketId)
+          .where('to', isEqualTo: userId)
           .get();
 
       QueryDocumentSnapshot<Object?> doc = chatid.docs[0];
@@ -50,7 +50,7 @@ class ChatDatabase extends GetxController {
       // chat already exists between userId and marketId
     } else if (existingChatSnapshot2.docs.isNotEmpty) {
       QuerySnapshot<Object?> chatid2 = await chatRef
-          .where('from', isEqualTo: marketId)
+          .where('from', isEqualTo:userId)
           .where('to', isEqualTo: userId)
           .get();
 
@@ -62,7 +62,7 @@ class ChatDatabase extends GetxController {
 
       Map<String, dynamic> chatInfo = {
         "from": userId,
-        "to": marketId,
+        "to": userId,
         "messages": [],
       };
       await chatRef.doc(docId).set(chatInfo);
@@ -73,15 +73,15 @@ class ChatDatabase extends GetxController {
   static Stream<List<QueryDocumentSnapshot>> getUserChat() {
     final String userId = UserAccount.info!.uid;
 
-    final CollectionReference marketsRef =
+    final CollectionReference users=
         FirebaseFirestore.instance.collection('chat');
 
-    Stream<QuerySnapshot> fromStream = marketsRef
+    Stream<QuerySnapshot> fromStream = users
         .where('from', isEqualTo: userId)
         .orderBy('lasttime', descending: true)
         .snapshots();
 
-    Stream<QuerySnapshot> toStream = marketsRef
+    Stream<QuerySnapshot> toStream = users
         .where('to', isEqualTo: userId)
         .orderBy('lasttime', descending: true)
         .snapshots();
@@ -138,14 +138,14 @@ class ChatDatabase extends GetxController {
 
   static Future<void> chatChecker({required String uuid}) async {
     final useruuid = UserAccount.info!.uid;
-    final marketuuid = uuid;
+    final userId= uuid;
 
-    if (useruuid == marketuuid) return;
+    if (useruuid == userId) return;
 
     // Create chat
-    final chatId = await ChatDatabase.createChat(useruuid!, marketuuid);
+    final chatId = await ChatDatabase.createChat(useruuid);
     UserAccountChat? userAccountChat =
-        await DatabaseFirestore.getUserById(marketuuid);
+        await DatabaseFirestore.getUserById(userId);
 
     if (userAccountChat != null) {
       Get.to(
