@@ -73,7 +73,7 @@ class RegisterBodyEmployee extends GetView<RegisterControllerEmployee> {
     labelText: 'Experience',
     icon: Icon(Icons.format_list_numbered_sharp),
   ),
-  // Add a validator if needed
+
 ),const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {

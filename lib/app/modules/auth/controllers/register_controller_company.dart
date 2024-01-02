@@ -12,6 +12,7 @@ import '../../../core/utils/helpers/system_helper.dart';
 import '../../../data/model/user_model.dart';
 import '../../../data/provider/firebase_image.dart';
 import '../../../data/provider/user_firebase.dart';
+import '../../../data/repositorys/user_repository.dart';
 import '../../../routes/app_pages.dart';
 
 class RegisterControllerCompany extends GetxController {
@@ -57,31 +58,32 @@ class RegisterControllerCompany extends GetxController {
     "karak"
   ];
 
-  Map<String, List<String>> jobLanguages = {
-    'Front-end Engineer': ['HTML', 'CSS', 'JavaScript'],
-    'Mobile App Developer': ['Dart', 'Swift', 'Kotlin'],
-    'Accessibility Specialist': ['HTML', 'CSS', 'JavaScript'],
-    'Ruby on Rails Developer': ['Ruby', 'Rails'],
-    'PHP Developer': ['PHP'],
-    'Server-side Engineer': ['Node.js', 'Python', 'Java', 'C#'],
-    'Big Data Engineer': ['Hadoop', 'Spark', 'SQL'],
-    'Data Warehouse Architect': ['SQL', 'Data Modeling'],
-    'Cybersecurity Specialist': ['Python', 'C/C++', 'Java'],
-    'IT Support Specialist': ['Scripting Languages', 'Troubleshooting'],
-    'Quality Assurance (QA) Engineer': [
-      'Scripting Languages',
-      'Testing Frameworks'
-    ],
-    'DevOps Engineer': ['Python', 'Bash', 'PowerShell'],
-    'Cloud Architect/Engineer': ['Python', 'PowerShell'],
-    'Machine Learning Engineer': ['Python', 'TensorFlow', 'PyTorch'],
-    'Blockchain Developer': ['Solidity', 'Go', 'JavaScript'],
-    'IoT Specialist': ['C/C++', 'Python', 'JavaScript'],
-    'UI/UX Designer': ['Figma', 'Sketch', 'Adobe XD'],
-    'Data Scientist': ['Python', 'R', 'SQL'],
-    'AI Ethics Specialist': ['AI/ML Development Languages'],
-  };
-
+List<String> languageOptions= [
+    'Python',
+    'Java',
+    'JavaScript',
+    'C#',
+    'C++',
+    'Ruby',
+    'PHP',
+    'Swift',
+    'Kotlin',
+    'Dart',
+    'Go',
+    'Rust',
+    'TypeScript',
+    'SQL',
+    'HTML/CSS',
+    'Perl',
+    'Scala',
+    'Objective-C',
+    'Lua',
+    'Haskell',
+    'COBOL',
+    'Fortran',
+    'Prolog'
+  ];
+ final UserRepo = Get.put(UserRepository());
   @override
   void onInit() {
     cemailController = TextEditingController();
@@ -170,7 +172,9 @@ class RegisterControllerCompany extends GetxController {
 
     isLoading(false);
   }
-
+Future<void> createUser(UserAccount company) async {
+    await UserRepo.createUser(company);
+  }
   //Future<UserAccount?> getUser() async {
   // try {
   // final paths =

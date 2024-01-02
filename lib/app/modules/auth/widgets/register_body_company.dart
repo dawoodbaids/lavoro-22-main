@@ -68,77 +68,90 @@ class RegisterBodyCompany extends GetView<RegisterControllerCompany> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   padding: const EdgeInsets.all(8.0),
-               child: Obx(
-  () => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      GestureDetector(
-        onTap: () {
-          controller.isExpanded.value = !controller.isExpanded.value;
-        },
-        child: Container(
-       
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Job Programming Languages :',
-                style: TextStyle(fontSize: 16),
-              ),
-              Icon(
-                controller.isExpanded.value
-                    ? Icons.arrow_drop_up
-                    : Icons.arrow_drop_down,
-              ),
-            ],
-          ),
-        ),
-      ),
-      if (controller.isExpanded.value)
-        Container(
-       
-         
-          padding: const EdgeInsets.all(10.0),
-          child: Wrap(
-            spacing: 8.0,
-            children: controller.cselectedLanguages.map((jobTitle) {
-              return GestureDetector(
-                onTap: () {
-                  print('Job Title tapped: $jobTitle');
-                  if (controller.cselectedLanguages.contains(jobTitle)) {
-                    controller.cselectedLanguages.remove(jobTitle);
-                  } else {
-                    controller.cselectedLanguages.add(jobTitle);
-                  }
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(1.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: controller.cselectedLanguages.contains(jobTitle)
-                          ? Colors.purple
-                          : null,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: Text(
-                      jobTitle,
-                      style: TextStyle(
-                        color: controller.cselectedLanguages.contains(jobTitle)
-                            ? Colors.white
-                            : null,
-                      ),
+               child:  Obx(
+                    () => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            controller.isExpanded.value =
+                                !controller.isExpanded.value;
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.purple),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  'Programming Languages :',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Icon(
+                                  controller.isExpanded.value
+                                      ? Icons.arrow_drop_up
+                                      : Icons.arrow_drop_down,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        if (controller.isExpanded.value)
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.purple),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Wrap(
+                              spacing: 8.0,
+                              children:
+                                  controller.languageOptions.map((language) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    print('Language tapped: $language');
+                                    if (controller.cselectedLanguages
+                                        .contains(language)) {
+                                      controller.cselectedLanguages
+                                          .remove(language);
+                                    } else {
+                                      controller.cselectedLanguages
+                                          .add(language);
+                                    }
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(8.0),
+                                      decoration: BoxDecoration(
+                                        color: controller.cselectedLanguages
+                                                .contains(language)
+                                            ? Colors.purple
+                                            : null,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      child: Text(
+                                        language,
+                                        style: TextStyle(
+                                          color: controller.cselectedLanguages
+                                                  .contains(language)
+                                              ? Colors.white
+                                              : null,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
-                ),
-              );
-            }).toList(),
-          ),
-        ),
-    ],
-  ),
-),
 
 
                 ),

@@ -27,26 +27,26 @@ class DatabaseFirestore extends GetxController {
       final paths = await firebaseInstance.collection("users").doc(uid).get();
       Map<String, dynamic> data = paths.data() ?? {};
       var userAccount = UserAccount.formJson(data);
-      if (userAccount.uid == "uuid") {
-        final paths =
-            await firebaseInstance.collection("company").doc(uid).get();
-        Map<String, dynamic> data = paths.data() ?? {};
-        userAccount = UserAccount.formJson(data);
-        final company = await firebaseInstance
-            .collection("company")
-            .where('Programing Language', arrayContains: )
-            .get();
-        List<UserAccount> companyinhome = [];
-        try {
-          company.docs.forEach((doc) {
-            Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-            companyinhome.add(UserAccount.formJson(data));
-            print(company);
-          });
-        } catch (e) {
-          print(e);
-        }
-      }
+      // if (userAccount.uid == "uuid") {
+      //   final paths =
+      //       await firebaseInstance.collection("company").doc(uid).get();
+      //   Map<String, dynamic> data = paths.data() ?? {};
+      //   userAccount = UserAccount.formJson(data);
+      //   final company = await firebaseInstance
+      //       .collection("company")
+      //       .where('Programing Language', )
+      //       .get();
+      //   List<UserAccount> companyinhome = [];
+      //   try {
+      //     company.docs.forEach((doc) {
+      //       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      //       companyinhome.add(UserAccount.formJson(data));
+      //       print(company);
+      //     });
+      //   } catch (e) {
+      //     print(e);
+      //   }
+      // }
 
       return userAccount;
     } on FirebaseException catch (e) {
